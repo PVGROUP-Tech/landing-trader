@@ -45,8 +45,10 @@ export default function Hero() {
     const { error } = await supabase
       .from("leads")
       .insert([
-         ...data,
-         ...utms,
+        {
+          ...data,
+          ...utms,
+        },
       ]);
 
     if (error) throw error;
