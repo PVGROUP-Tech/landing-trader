@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { leadSchema } from "../schemas/leadSchema";
 import { formatPhone } from "../utils/formatPhone";
 import { Controller } from "react-hook-form";
+import { getUtmParams } from "../utils/getUtmParams";
 
 function Benefit({ icon, title, text }) {
   return (
@@ -38,10 +39,15 @@ export default function Hero() {
   });
 
   const onSubmit = async (data) => {
-  try {
+    const utms = getUtmParams();
+  
+    try {
     const { error } = await supabase
       .from("leads")
-      .insert([data]);
+      .insert([
+         ...data,
+         ...utms,
+      ]);
 
     if (error) throw error;
     trackLead();
