@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { trackLead } from "../lib/pixel";
 import { toast } from "sonner";
 import { supabase } from "../lib/supabase";
 import { FaChartLine, FaUsers, FaMobileAlt } from "react-icons/fa";
@@ -43,8 +44,10 @@ export default function Hero() {
       .insert([data]);
 
     if (error) throw error;
+    trackLead();
 
     toast.success("Cadastro realizado com sucesso!");
+
     setTimeout(() => {
       navigate("/obrigado");
     }, 1000);
