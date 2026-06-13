@@ -10,3 +10,11 @@ export const initPixel = () => {
 export const trackLead = () => {
   ReactPixel.default.track("Lead");
 };
+
+export const trackViewContent = () => {
+  ReactPixel.default.track("ViewContent");
+};
+
+export const trackCheckout = () => {
+  ReactPixel.default.track("InitiateCheckout");
+};

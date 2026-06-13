@@ -57,7 +57,7 @@ export default function Hero() {
     toast.success("Cadastro realizado com sucesso!");
 
     setTimeout(() => {
-      navigate("/obrigado");
+      navigate("/oferta");
     }, 1000);
 
   } catch (error) {
